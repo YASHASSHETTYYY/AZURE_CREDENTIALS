@@ -1,0 +1,25 @@
+name: Azure ML CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Submit Azure ML Job
+      uses: azure/azureml-actions@v1
+      with:
+        workspace-name: mlproj-ws-yashas
+        resource-group: rg-mlproject
+        job-yaml-path: job.yml
