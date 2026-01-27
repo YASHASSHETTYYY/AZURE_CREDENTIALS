@@ -1,9 +1,13 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 type: command
 
-command: python src/train.py
+command: |
+  pip install scikit-learn pandas
+  python src/train.py
 
 environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04
 
 compute: cpu-cluster
+
+experiment_name: AZURE_CREDENTIALS
