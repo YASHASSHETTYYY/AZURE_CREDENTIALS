@@ -6,4 +6,4 @@ command: python src/train.py
 environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04
 
-compute: azureml:cpu-cluster
+compute: cpu-cluster
